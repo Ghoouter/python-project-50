@@ -1,5 +1,4 @@
 import json
-import sys
 
 
 def normalize_value(value):
@@ -23,12 +22,12 @@ def generate_diff(file_path1, file_path2):
 
 	for key in sorted_set:
 		if key in common_keys and file1[key] == file2[key]:
-			result += f'  {key}: {file1[key]}'
+			result.append(f'  {key}: {file1[key]}')
 		if key in common_keys and file1[key] != file2[key]:
-			result += f'- {key}: {file1[key]}'
-			result += f'+ {key}: {file2[key]}'
+			result.append(f'- {key}: {file1[key]}')
+			result.append(f'+ {key}: {file2[key]}')
 		if key in only_file1:
-			result += f'- {key}: {file1[key]}'
+			result.append(f'- {key}: {file1[key]}')
 		if key in only_file2:
-			result += f'+ {key}: {file2[key]}'
+			result.append(f'+ {key}: {file2[key]}')
 	return '\n'.join(result)
