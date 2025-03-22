@@ -6,6 +6,7 @@ def normalize_value(value):
 		return str(value).lower()
 	return value
 
+
 def generate_diff(file_path1, file_path2):
 	file1 = json.load(open(file_path1))
 	file2 = json.load(open(file_path2))
