@@ -10,7 +10,7 @@ def file1():
 
 @pytest.fixture
 def file2():
-	return"gendiff/tests/fixtures/file2.json"
+	return "gendiff/tests/fixtures/file2.json"
 
 
 def test_generate_diff(file1, file2):
