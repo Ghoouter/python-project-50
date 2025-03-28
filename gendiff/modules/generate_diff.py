@@ -1,5 +1,5 @@
-import json
 from gendiff.modules.parser import parsing
+
 
 def normalize_value(value):
 	if isinstance(value, bool):
