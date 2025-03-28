@@ -1,5 +1,5 @@
 import json
-
+from gendiff.modules.parser import parsing
 
 def normalize_value(value):
 	if isinstance(value, bool):
@@ -8,9 +8,8 @@ def normalize_value(value):
 
 
 def generate_diff(file_path1, file_path2):
-	with open(file_path1) as f1, open(file_path2) as f2:
-		file1 = json.load(f1)
-		file2 = json.load(f2)
+	file1 = parsing(file_path1)
+	file2 = parsing(file_path2)
 
 	file1 = {k: normalize_value(v) for k, v in file1.items()}
 	file2 = {k: normalize_value(v) for k, v in file2.items()}
