@@ -8,7 +8,7 @@ package-install:
 	uv tool install dist/*.whl
 
 lint:
-	uv run ruff check gendiff
+	uv run ruff check gendiff --fix
 
 test:
 	uv run pytest
