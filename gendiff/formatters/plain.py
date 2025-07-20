@@ -17,11 +17,16 @@ def plain_format(diff_result: dict):
         for k, v in node.items():
             current_path = f"{path}{v['key']}"
             if v['operation'] == 'changed':
-                result += f"Property '{current_path}' was updated. From {plain_value(v['old'])} to {plain_value(v['new'])}\n"
+                old_val = plain_value(v['old'])
+                new_val = plain_value(v['new'])
+                result += f"Property '{current_path}' was updated. " \
+                         f"From {old_val} to {new_val}\n"
             elif v['operation'] == 'removed':
                 result += f"Property '{current_path}' was removed\n"
             elif v['operation'] == 'added':
-                result += f"Property '{current_path}' was added with value: {plain_value(v['value'])}\n"
+                value = plain_value(v['value'])
+                result += f"Property '{current_path}' was added with value: " \
+                         f"{value}\n"
             elif v['operation'] == 'nested':
                 result += walk(v['value'], current_path + '.') + '\n'
         return result[:-1]
