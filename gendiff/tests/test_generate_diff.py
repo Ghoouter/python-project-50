@@ -1,6 +1,6 @@
 import pytest
-from gendiff import generate_diff
 
+from gendiff import generate_diff
 
 parameter = [('path1_json', 'path2_json', 'stylish', 'gendiff/tests/fixtures/result_stylish.txt'),
              ('path1_json', 'path2_json', 'plain', 'gendiff/tests/fixtures/result_plain.txt'),
