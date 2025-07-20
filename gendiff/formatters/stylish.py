@@ -43,4 +43,4 @@ def stylish_format(diff_result):  # noqa C901
                 strings += f"\n{space}{build_string(v, 'value', depth, '+ ')}"
         result = itertools.chain('{', strings, '\n', ['    ' * depth + '}'])
         return ''.join(result)
-    return walk(diff_result, 0)
+    return walk(diff_result, 0) + '\n'
