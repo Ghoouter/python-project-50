@@ -1,6 +1,6 @@
-from gendiff.formatters.json import json_value
-from gendiff.formatters.plain import plain_value
 from gendiff.formatters.stylish import stylish_value
+from gendiff.formatters.plain import plain_value
+from gendiff.formatters.json import json_value
 
 
 def test_stylish_value():
