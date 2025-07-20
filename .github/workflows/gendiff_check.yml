@@ -6,21 +6,30 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
-          python-version: 3.8
+          python-version: 3.12
       - name: install dependencies
         run: |
-          pip install poetry flake8 pytest
+          pip install uv
           make install
       - name: Run linter
-        run: make lint
-      - name: Code Coverage
-        uses: paambaati/codeclimate-action@v3.0.0
+        run: |
+          make lint
+      - name: Run tests
+        run: | 
+          make test
+      - name: Run test coverage
+        run: |
+          make test-coverage
+      - name: SonarQubeScan
+        uses: SonarSource/sonarqube-scan-action@v5
         env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
-          coverageCommand: make test-coverage
-          debug: true
+          args: >
+            -Dsonar.projectKey=hexlet-boilerplates_python-package
+            -Dsonar.organization=hexlet-boilerplates
+            -Dsonar.python.coverage.reportPaths=coverage.xml
