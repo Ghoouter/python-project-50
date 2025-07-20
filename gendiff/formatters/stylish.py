@@ -31,7 +31,8 @@ def stylish_format(diff_result):  # noqa C901
         strings = ''
         for k, v in node.items():
             if v['operation'] == 'nested':
-                strings += f"\n{space * 2}{v['key']}: {walk(v['value'], depth + 1)}"
+                strings += f"\n{space * 2}{v['key']}: "
+                f"{walk(v['value'], depth + 1)}"
             elif v['operation'] == 'unchanged':
                 strings += f"\n{space}{build_string(v, 'value', depth)}"
             elif v['operation'] == 'changed':
